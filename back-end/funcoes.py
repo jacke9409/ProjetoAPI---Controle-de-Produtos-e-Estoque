@@ -69,3 +69,18 @@ def atualizar_produto(nome, preco, quantidade):
         finally:
             cursor.close()
             conexao.close()
+
+def excluir_produto(nome):
+    conexao, cursor = conectar()
+    if conexao:
+        try:
+            cursor.execute("""
+                DELETE FROM produtos
+                WHERE nome = %s
+                """, (nome,))
+            conexao.commit()
+        except Exception as erro:
+            print(f"Erro ao excluir o produto: {erro}")
+        finally:
+            cursor.close()
+            conexao.close()
