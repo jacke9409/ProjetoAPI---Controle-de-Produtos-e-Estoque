@@ -19,12 +19,12 @@ def obter_produtos():
         })
     return {"produtos": lista_produtos}  
    
-app.post("/produtos/")
+@app.post("/produtos/")
 def adicionar_produto(nome: str, preco: float, quantidade: int):
     cadastrar_produto(nome, preco, quantidade)
     return {"mensagem": "Produto adicionado com sucesso!"}
 
-app.put("/produtos/")
+@app.put("/produtos/")
 def atualizar_produto(nome: str, preco: float, quantidade: int):
     atualizar_produto(nome, preco, quantidade)
     return {"mensagem": "Produto atualizado com sucesso!"}

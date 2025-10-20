@@ -1,4 +1,4 @@
-# front-end
+
 import streamlit as st
 import requests 
 # • Consumir a API via aplicativo Streamlit (front-end).
