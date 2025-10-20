@@ -6,8 +6,10 @@ def criar_tabela():
         try:
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS produtos (
-                    nome SERIAL PRIMARY KEY,
-                    preco FLOAT NOT NULL,
+                    id SERIAL PRIMARY KEY,
+                    nome VARCHAR(100) NOT NULL,
+                    categoria VARCHAR(50),
+                    preco DECIMAL(10, 2) NOT NULL,
                     quantidade INT NOT NULL
                     )
                 """)
