@@ -22,14 +22,14 @@ def criar_tabela():
 criar_tabela()
 
 
-def cadastrar_produto(nome, preco, quantidade):
+def cadastrar_produto(nome, categoria, preco, quantidade):
     conexao, cursor = conectar()
     if conexao:
         try:
             cursor.execute("""
-                INSERT INTO produtos (nome, preco, quantidade)
-                VALUES (%s, %s, %s)
-                """, (nome, preco, quantidade))
+                INSERT INTO produtos (nome, categoria, preco, quantidade)
+                VALUES (%s, %s, %s, %s)
+                """, (nome, categoria, preco, quantidade))
             conexao.commit()
         except Exception as erro:
             print(f"Erro ao cadastrar o produto: {erro}")
