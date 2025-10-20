@@ -19,3 +19,4 @@ requirements, env e etc.. -->
 <!-- • Atualizar preço ou quantidade -->
 <!-- • Excluir produto -->
 <!-- • Mostrar valor total em estoque (no Streamlit) -->
+
