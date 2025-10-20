@@ -28,3 +28,4 @@ app.put("/produtos/")
 def atualizar_produto(nome: str, preco: float, quantidade: int):
     atualizar_produto(nome, preco, quantidade)
     return {"mensagem": "Produto atualizado com sucesso!"}
+    
