@@ -10,3 +10,12 @@ Estrutura:
 Pasta back-end e front-end separadas.
 Utilizar todas as boas praticas como git, gitignore,
 requirements, env e etc.. -->
+
+<!-- Etapas do Desenvolvimento -->
+
+<!-- Funcionalidades: -->
+<!-- • Adicionar produto -->
+<!-- • Listar todos -->
+<!-- • Atualizar preço ou quantidade -->
+<!-- • Excluir produto -->
+<!-- • Mostrar valor total em estoque (no Streamlit) -->
