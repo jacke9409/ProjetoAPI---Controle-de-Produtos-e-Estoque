@@ -9,8 +9,8 @@ def criar_tabela():
                     id SERIAL PRIMARY KEY,
                     nome VARCHAR(100) NOT NULL,
                     categoria VARCHAR(50),
-                    preco DECIMAL(10, 2) NOT NULL,
-                    quantidade INT NOT NULL
+                    preco DECIMAL(10,2),
+                    quantidade INT
                     )
                 """)
             conexao.commit()
@@ -83,6 +83,20 @@ def excluir_produto(nome):
             conexao.commit()
         except Exception as erro:
             print(f"Erro ao excluir o produto: {erro}")
+        finally:
+            cursor.close()
+            conexao.close()
+
+def buscar_estoque(id_item):
+    conexao, cursor = conectar()
+    if conexao:
+        try:
+            cursor.execute(
+                "SELECT nome,quantidade FROM produtos ORDER BY id = %s", (id_item,)
+            )
+            return cursor.fetchone()
+        except Exception as erro:
+            print(f"Erro ao tentar buscar produtos {erro}")
         finally:
             cursor.close()
             conexao.close()

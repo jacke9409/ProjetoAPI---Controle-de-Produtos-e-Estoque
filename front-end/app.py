@@ -17,7 +17,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("Desenvolvido por Jackelyne")
 st.sidebar.markdown("2025")
 
-if menu == "Produto":
+if menu == "produtos":
     st.subheader("Lista de produtos")
     try:
         response = requests.get(f"{API_URL}/produtos/", timeout=5)

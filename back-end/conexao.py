@@ -10,6 +10,7 @@ params = {
     "host": os.getenv("DB_HOST"),
     "port": os.getenv("DB_PORT")
     }
+
 def conectar():
     """Estabelece uma conexão com o banco de dados PostgreSQL."""
     try:
