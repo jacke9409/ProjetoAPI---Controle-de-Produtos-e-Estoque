@@ -1,5 +1,5 @@
 
-#GET > Pegar/Listar
-#POST > Enviar/Cadastrar
-#PUT > Atualizar
-#DELETE > Deletar
+from typing import List, Dict, Any
+from decimal import Decimal
+from funcoes import listar_produtos, cadastrar_produto, atualizar_produto, excluir_produto
+
