@@ -26,7 +26,6 @@ def cadastrar_produto(nome, preco, quantidade):
     comando = "INSERT INTO produtos (nome, preco, quantidade) VALUES (%s, %s, %s)"
     valores = (nome, preco, quantidade)
     cursor.execute(comando, valores)
-    conexao.commit()
     cursor.close()
     conexao.close()
 # aqui eu criei a função cadastrar produto
@@ -39,3 +38,15 @@ def listar_produtos():
     cursor.execute(comando)
     resultados = cursor.fetchall()
     cursor.close()
+    conexao.close()
+
+def atualizar_produto(nome, preco, quantidade):
+    conexao = conectar()
+    cursor = conexao.cursor()
+    comando = "UPDATE produtos SET preco = %s, quantidade = %s WHERE nome = %s"
+    valores = (preco, quantidade, nome)
+    cursor.execute(comando, valores)
+
+    cursor.close()
+    conexao.close()
+    
