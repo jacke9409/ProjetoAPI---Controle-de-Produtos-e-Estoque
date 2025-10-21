@@ -26,19 +26,22 @@ def catalogo():
         })
     return {"produtos": lista}
 
-@app.put("/produtos/{id_produtos}")
+@app.put("/produtos/{id_produto}")
 def atualizar_produto(id_produto: int, preco: float, quantidade: int):
     produto = funcoes.buscar_estoque(id_produto)
     if produto:
-        funcoes.atualizar_produto(produto, preco, quantidade)
+        funcoes.atualizar_produto(id_produto, preco, quantidade)
         return {"mensagem": "Produto atualizado com sucesso"}
     else:
         return {"mensagem": "Produto não encontrado"}
 
-@app.delete("/produtos")
-def deletar_produto(id_produto):
-    deletar = funcoes.excluir_produto(id_produto)
-    if deletar:
-        return {"mensagem": "Produto excluído com sucesso"}
-    else:
-        return {"mensagem": "Produto não encontrado"}
+
+@app.delete("/loja/{id_produto}")
+def deletar_produto(id_produto: int):
+    produto = funcoes.listar_produtos()
+    if produto:
+        funcoes.excluir_produto(id_produto)
+        return {"mensagem": "Produto deletado ✔"}
+    else: 
+        return {"erro": "Erro ao deletar produto"}
+    

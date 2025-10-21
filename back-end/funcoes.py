@@ -55,16 +55,15 @@ def listar_produtos():
             conexao.close()
 
 
-
-def atualizar_produto(nome, preco, quantidade):
+def atualizar_produto(id_produto, preco, quantidade):
     conexao, cursor = conectar()
     if conexao:
         try:
             cursor.execute("""
                 UPDATE produtos
                 SET preco = %s, quantidade = %s
-                WHERE nome = %s
-                """, (preco, quantidade, nome))
+                WHERE id_produto = %s
+            """, (preco, quantidade, id_produto))
             conexao.commit()
         except Exception as erro:
             print(f"Erro ao atualizar o produto: {erro}")
@@ -72,14 +71,14 @@ def atualizar_produto(nome, preco, quantidade):
             cursor.close()
             conexao.close()
 
-def excluir_produto(nome):
+
+def excluir_produto(id_produto):  # <--- está usando nome, não id_produto
+
     conexao, cursor = conectar()
     if conexao:
         try:
-            cursor.execute("""
-                DELETE FROM produtos
-                WHERE nome = %s
-                """, (nome,))
+            cursor.execute( "DELETE FROM produtos WHERE id=%s", 
+                (id_produto,))
             conexao.commit()
         except Exception as erro:
             print(f"Erro ao excluir o produto: {erro}")
@@ -87,16 +86,3 @@ def excluir_produto(nome):
             cursor.close()
             conexao.close()
 
-def buscar_estoque(id_item):
-    conexao, cursor = conectar()
-    if conexao:
-        try:
-            cursor.execute(
-                "SELECT nome,quantidade FROM produtos ORDER BY id = %s", (id_item,)
-            )
-            return cursor.fetchone()
-        except Exception as erro:
-            print(f"Erro ao tentar buscar produtos {erro}")
-        finally:
-            cursor.close()
-            conexao.close()

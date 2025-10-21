@@ -17,7 +17,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("Desenvolvido por Jackelyne")
 st.sidebar.markdown("2025")
 
-if menu == "produtos":
+if menu == "Produto":
     st.subheader("Catálogo de produtos")
     response = requests.get(f"{API_URL}/produtos/")
     if response.status_code == 200:
@@ -50,22 +50,25 @@ elif menu == "Atualizar produto":
     quantidade = st.number_input("Nova quantidade em estoque", min_value=0, step=1)
 
     if st.button("Atualizar produto"):
-        params = {"id": id, "preco": preco, "quantidade": quantidade}
-        response = requests.put(f"{API_URL}/produtos/", params=params)
+        id_produto= st.number_input("ID do produto a ser atualizado", min_value=0, step=1)
+        preco = st.number_input("Novo preço do produto", min_value=0.0, format="%.2f")
+        quantidade = st.number_input("Nova quantidade em estoque", min_value=0, step=1)
+    
+        response = requests.put(f"{API_URL}/produtos/{id_produto}", params={"preco": preco, "quantidade": quantidade}
+        )
         if response.status_code == 200:
             st.success("Produto atualizado com sucesso!")
         else:
             st.error("Erro ao atualizar o produto.")
-    
+
 elif menu == "Deletar produto":
     st.subheader("Deletar produto")
-    nome = st.text_input("Nome do produto a ser deletado")
+    id_produto= st.number_input("ID do produto a ser deletado", min_value=0, step=1)
 
     if st.button("Deletar produto"):
-        params = {"nome": nome}
-        response = requests.delete(f"{API_URL}/produtos/", params=params)
+        response = requests.delete(f"{API_URL}/produtos/{id_produto}")
         if response.status_code == 200:
             st.success("Produto deletado com sucesso!")
         else:
             st.error("Erro ao deletar o produto.")
-    
+            
