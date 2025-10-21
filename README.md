@@ -39,3 +39,6 @@ Excluir um produto do sistema
 Mostrar o valor total do estoque direto no app do Streamlit
 
 No geral, foi um projeto legal de fazer porque deu pra treinar tanto o backend com FastAPI quanto o frontend com Streamlit, além de pensar na organização do código e nas boas práticas.
+]
+
+a função deletar está funcionando só na api, no streamlit não roda, irei rever 
